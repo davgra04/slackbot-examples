@@ -41,10 +41,54 @@ This repo contains a few examples of slackbots written in Python.
    terraform apply -var-file="deployment.tfvars" --auto-approve
    ```
 
-## Deploy Slackbot
-
-
 ## Register and Configure Slack App
 
+1. Create new Slack app
+   * https://api.slack.com/apps?new_app=1&ref=bolt_start_hub
+   * give it a name
+   * choose a workspace
+2. Request scopes
+   * https://api.slack.com/apps/
+   * navigate to app > OAuth & Permissions > Bot Token Scopes
+   * add relevant OAuth scopes
+3. Install app to workspace
+   * https://api.slack.com/apps/
+   * navigate to app > Install App
+   * click Install
+     * this will require admin approval
+4. Enable other features
+   * things like the app home feature
+5. Save tokens to creds.txt
+   ```bash
+   # creds.txt
+   export SLACK_BOT_TOKEN=xoxb-your-oauth-token
+   export SLACK_SIGNING_SECRET=your-apps-signing-secret
+   ```
+
+## Deploy Slackbot
+
+1. Copy bot files to EC2 instance
+2. Create virtual environment
+    ```
+    python3 -m venv ./env
+    ```
+3. Install required libraries
+    ```
+    pip install -r requirements.txt
+    ```
+4. Source app credentials
+    ```
+    source creds.txt
+    ```
+5. Run slackbot
+    ```
+    python examplebot.py
+    ```
+6. Subscribe to events API
+   * https://api.slack.com/apps/
+   * navigate to app > Event Subscriptions
+   * enable events and add request URL (URL to server)
+     * by default, bolt uses `/slack/events` route
+   * subscribe to relevant events
 
 

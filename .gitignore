@@ -3,6 +3,9 @@
 ################################################################################
 
 deployment*.tfvars
+creds.txt
+dev_env
+env
 
 ################################################################################
 # Created by https://www.toptal.com/developers/gitignore/api/terraform,ansible,python

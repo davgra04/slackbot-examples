@@ -103,7 +103,7 @@ resource "aws_security_group" "slackbots-api-sg" {
     from_port   = 3000
     to_port     = 3000
     protocol    = "tcp"
-    cidr_blocks = ["${var.my_ip}/32"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
 
