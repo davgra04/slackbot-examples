@@ -1,6 +1,3 @@
-variable "basename" {
-  description = "A prefex to be used in all resource names"
-}
 
 variable "my_ip" {
   description = "Used for setting ssh and http/https access for my machine"
